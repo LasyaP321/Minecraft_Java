@@ -1,0 +1,109 @@
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class Game extends JFrame implements KeyListener {
+    private int blockImageWidth = 30;
+    private int blockImageHeight = 30;
+    private int playerX = 10;
+    private int playerY = 10;
+    private JLabel currentWidthLabel;
+    private JLabel currentHeightLabel;
+
+    public Game() {
+        this.setSize(900, 600);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.addKeyListener(this);
+        currentWidthLabel = new JLabel("Width: " + blockImageWidth);
+        currentHeightLabel = new JLabel("Height: " + blockImageHeight);
+        this.add(currentWidthLabel);
+        this.add(currentHeightLabel);
+        this.setLayout(null);
+        currentWidthLabel.setBounds(10, 10, 100, 20);
+        currentHeightLabel.setBounds(10, 30, 100, 20);
+        this.setVisible(true);
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        int keyCode = e.getKeyCode();
+        System.out.println(keyCode);
+        if (e.isShiftDown() && keyCode == KeyEvent.VK_P) {
+            System.out.println("p and shift pressed together");
+            blockImageWidth += 10;
+            blockImageHeight += 10;
+            updateSizeDisplay();
+        } else if (e.isShiftDown() && keyCode == KeyEvent.VK_M) {
+            System.out.println("m and shift pressed together");
+            blockImageWidth -= 10;
+            blockImageHeight -= 10;
+            updateSizeDisplay();
+        } else if (keyCode == KeyEvent.VK_UP) {
+            moveUp();
+        } else if (keyCode == KeyEvent.VK_DOWN) {
+            moveDown();
+        } else if (keyCode == KeyEvent.VK_LEFT) {
+            moveLeft();
+        } else if (keyCode == KeyEvent.VK_RIGHT) {
+            moveRight();
+        } else {
+            handleImageChange(keyCode);
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
+
+    private void updateSizeDisplay() {
+        currentWidthLabel.setText("Width: " + blockImageWidth);
+        currentHeightLabel.setText("Height: " + blockImageHeight);
+    }
+
+    private void moveUp() {
+        if (playerY >= 0) {
+            playerY -= blockImageHeight;
+            System.out.println("When Up arrow key is pressed, X = " + playerX + " , Y = " + playerY);
+            // Update player position on canvas
+        }
+    }
+
+    private void moveDown() {
+        if (playerY <= 500) {
+            playerY += blockImageHeight;
+            System.out.println("When Down arrow key is pressed, X = " + playerX + " Y = " + playerY);
+            // Update player position on canvas
+        }
+    }
+
+    private void moveLeft() {
+        if (playerX > 0) {
+            playerX -= blockImageWidth;
+            System.out.println("When Left arrow key is pressed, X = " + playerX + " , Y = " + playerY);
+            // Update player position on canvas
+        }
+    }
+
+    private void moveRight() {
+        if (playerX <= 850) {
+            playerX += blockImageWidth;
+            System.out.println("When Right arrow key is pressed, X = " + playerX + " , Y = " + playerY);
+            // Update player position on canvas
+        }
+    }
+
+    private void handleImageChange(int keyCode) {
+        // This method should handle changing the image based on the key pressed
+        // For simplicity, it's not fully implemented here
+        System.out.println("Change image based on key code: " + keyCode);
+    }
+
+    public static void main(String[] args) {
+        new Game();
+    }
+}
