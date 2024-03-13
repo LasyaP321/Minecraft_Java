@@ -1,0 +1,60 @@
+public class BodyBackground {
+  
+    public BodyBackground() {
+        setBackgroundImage("https://i.ytimg.com/vi/Dg0jOzopYU/maxresdefault.jpg");
+        setBackgroundPosition("center");
+        setBackgroundSize("cover");
+    }
+}
+
+public class MyCanvas {
+  
+    public MyCanvas() {
+        setBorderWidth(10);
+        setBackgroundColor("white");
+        setBorderStyle("ridge");
+    }
+}
+
+public class H2 {
+  
+    public H2() {
+        setBorderRadius(10);
+        setWidth(200);
+        setPadding(5);
+    }
+}
+
+public class H3 {
+  
+    public H3() {
+        setDisplay("inline-block");
+    }
+}
+
+public class Span {
+  
+    public Span() {
+        setColor("black");
+    }
+}
+
+public class Anchor {
+  
+    public Anchor() {
+        setTextDecoration("none");
+        setFontSize(20);
+        setPadding(10);
+        setFloat("left");
+        setBorderRadius(10);
+    }
+}
+
+public class HeadInfo {
+  
+    public HeadInfo() {
+        setWidth(600);
+        setBorderRadius(10);
+        setMarginBottom(10);
+    }
+}
